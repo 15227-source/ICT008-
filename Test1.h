@@ -1,8 +1,10 @@
+#ifndef TEST1_H
+#define TEST1_H
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <array>
-#include <algorithm>
 
 using namespace std;
 
@@ -92,7 +94,6 @@ public:
             }
         }
 
-        // simple ISBN check for testing
         return isbn.rfind("ISBN", 0) == 0;
     }
 };
@@ -143,7 +144,4 @@ public:
     }
 };
 
-
-
-    return 0;
-}
+#endif

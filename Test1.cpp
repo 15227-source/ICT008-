@@ -3,7 +3,7 @@
 #include <vector>
 #include <array>
 #include <algorithm>
-#include <Test1.h>
+#include "Test1.h"
 
 using namespace std;
 
@@ -59,7 +59,7 @@ int main() {
         { Author("Jane", "Austen") },
         "ISBN004",
         "C1"
-    ); // empty title
+    );
 
     Book* incorrect2 = new EBook(
         "Broken Book",
@@ -67,60 +67,60 @@ int main() {
         "12345",
         -2.0,
         ""
-    ); // bad author, bad ISBN, bad size, empty format
+    );
 
     Book* incorrect3 = new HardcopyBook(
         "No Shelf Book",
         {},
         "ISBN006",
         ""
-    ); // no author and empty shelf location
+    );
 
-    // show correct initialisation
+    // Show correct initialisation
     displayValidity(correct1, "Correct Book 1");
     displayValidity(correct2, "Correct Book 2");
     displayValidity(correct3, "Correct Book 3");
 
-    // show incorrect initialisation
+    // Show incorrect initialisation
     displayValidity(incorrect1, "Incorrect Book 1");
     displayValidity(incorrect2, "Incorrect Book 2");
     displayValidity(incorrect3, "Incorrect Book 3");
 
-    // three arrays of 3 books each
+    // Three arrays of 3 books each
     array<Book*, 3> ascendingBooks = {
-        new HardcopyBook("Animal Farm", {Author("George", "Orwell")}, "ISBN101", "A2"),
-        new EBook("Brave New World", {Author("Aldous", "Huxley")}, "ISBN102", 1.8, "EPUB"),
-        new HardcopyBook("Catch-22", {Author("Joseph", "Heller")}, "ISBN103", "A3")
+        new HardcopyBook("Animal Farm", { Author("George", "Orwell") }, "ISBN101", "A2"),
+        new EBook("Brave New World", { Author("Aldous", "Huxley") }, "ISBN102", 1.8, "EPUB"),
+        new HardcopyBook("Catch-22", { Author("Joseph", "Heller") }, "ISBN103", "A3")
     };
 
     array<Book*, 3> descendingBooks = {
-        new HardcopyBook("Zoo", {Author("James", "Patterson")}, "ISBN201", "D1"),
-        new EBook("Yours Truly", {Author("Abby", "Jimenez")}, "ISBN202", 2.1, "PDF"),
-        new HardcopyBook("Xenocide", {Author("Orson", "Card")}, "ISBN203", "D2")
+        new HardcopyBook("Zoo", { Author("James", "Patterson") }, "ISBN201", "D1"),
+        new EBook("Yours Truly", { Author("Abby", "Jimenez") }, "ISBN202", 2.1, "PDF"),
+        new HardcopyBook("Xenocide", { Author("Orson", "Card") }, "ISBN203", "D2")
     };
 
     array<Book*, 3> mixedBooks = {
-        new HardcopyBook("Moby Dick", {Author("Herman", "Melville")}, "ISBN301", "M1"),
-        new EBook("Animal Farm", {Author("George", "Orwell")}, "ISBN302", 1.2, "PDF"),
-        new HardcopyBook("The Hobbit", {Author("J.R.R.", "Tolkien")}, "ISBN303", "M2")
+        new HardcopyBook("Moby Dick", { Author("Herman", "Melville") }, "ISBN301", "M1"),
+        new EBook("Animal Farm", { Author("George", "Orwell") }, "ISBN302", 1.2, "PDF"),
+        new HardcopyBook("The Hobbit", { Author("J.R.R.", "Tolkien") }, "ISBN303", "M2")
     };
 
-    // show before sorting
+    // Show before sorting
     displayArray(ascendingBooks, "Ascending Order Array - Before Sort");
     displayArray(descendingBooks, "Descending Order Array - Before Sort");
     displayArray(mixedBooks, "Mixed Order Array - Before Sort");
 
-    // call sort function
+    // Call sort function
     sortBooksByTitle(ascendingBooks);
     sortBooksByTitle(descendingBooks);
     sortBooksByTitle(mixedBooks);
 
-    // show after sorting
+    // Show after sorting
     displayArray(ascendingBooks, "Ascending Order Array - After Sort");
     displayArray(descendingBooks, "Descending Order Array - After Sort");
     displayArray(mixedBooks, "Mixed Order Array - After Sort");
 
-    // clean up
+    // Clean up
     delete correct1;
     delete correct2;
     delete correct3;
@@ -133,3 +133,4 @@ int main() {
     for (auto book : mixedBooks) delete book;
 
     return 0;
+}
